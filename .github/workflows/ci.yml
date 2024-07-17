@@ -37,10 +37,10 @@ jobs:
         standard-version
 
     - name: Build Docker image
-      run: docker build -t malekBouzidi/flutter_backend .
+      run: docker build -t docker.io/malekbouzidi/flutter_backend .
 
     - name: Login to DockerHub
       run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
     - name: Push Docker image
-      run: docker push malekBouzidi/flutter_backend
+      run: docker push docker.io/malekBouzidi/flutter_backend
