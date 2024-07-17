@@ -5,7 +5,6 @@ import categoryRoutes from "./routes/categories.js";
 import courseRoutes from "./routes/courses.js";
 import authRoutes from "./routes/auth.user.js";
 import participationRoutes from "./routes/participation.js";
-import { json } from "body-parser";
 
 const app = express();
 const port = process.env.PORT || 5000;
