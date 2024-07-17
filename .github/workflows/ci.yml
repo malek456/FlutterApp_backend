@@ -24,6 +24,12 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    # Set Git user for committing version changes
+    - name: Set Git user
+      run: |
+        git config --global user.name "malek456"
+        git config --global user.email "bouzidimalek01@gmail.com"
+
     # Optional: Version the backend (e.g., using standard-version)
     - name: Version the backend
       run: |
