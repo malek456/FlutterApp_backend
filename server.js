@@ -7,8 +7,6 @@ import authRoutes from './routes/auth.user.js';
 import participationRoutes from './routes/participation.js';
 
 
-
-
 const app = express();
 const port = process.env.PORT || 5000;
 
