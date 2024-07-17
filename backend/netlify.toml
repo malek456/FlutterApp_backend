@@ -1,0 +1,15 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build]
+  publish = "build"  # Adjust this to your frontend build directory if applicable
+  functions = "controllers"  # Ensure this points to your backend controllers directory
+  command = "npm run build"  # Correct placement of the build command
+   
+[build.ignore]
+  files = ["scoop/**"]  # Ignore the problematic scoop directory
+
+[build.environment]
+  NODE_VERSION = "16"  # Ensure you specify the Node.js version compatible with Netlify
