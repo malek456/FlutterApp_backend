@@ -30,14 +30,23 @@ jobs:
         git config --global user.name "malek456"
         git config --global user.email "bouzidimalek01@gmail.com"
 
-    - name: Version the backend
+    - name: Increment version
       run: |
-        npm install -g standard-version
-        standard-version
+        VERSION=$(jq -r '.version' package.json)
+        echo "Current version: $VERSION"
+        IFS='.' read -r MAJOR MINOR PATCH <<<"${VERSION}"
+        PATCH=$((PATCH + 1))
+        NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+        echo "New version: $NEW_VERSION"
+        jq ".version = \"$NEW_VERSION\"" package.json > temp.json && mv temp.json package.json
+        echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+    - name: Commit updated version
+      run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git push --follow-tags origin main
-
+        git commit -am "Bump version to ${{ env.VERSION }}"
+        git push
 
     - name: Build Docker image
       run: docker build -t docker.io/malekbouzidi/nodejs-backend .
