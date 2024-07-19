@@ -30,13 +30,13 @@ jobs:
         git config --global user.name "malek456"
         git config --global user.email "bouzidimalek01@gmail.com"
 
-   - name: Version the backend
-        run: |
-          npm install -g standard-version
-          standard-version
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git push --follow-tags origin main
+    - name: Version the backend
+      run: |
+        npm install -g standard-version
+        standard-version
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git push --follow-tags origin main
 
 
     - name: Build Docker image
